@@ -3,6 +3,6 @@
     <app-recipelist (passRecipeSelected)="onShowDetails($event)"></app-recipelist>
   </div>
   <div class="col-md-7">
-    <app-recipedetail [recipeToShow]="recipePassed"></app-recipedetail>
+    <app-recipedetail [recipeToShow]="recipePassed" *ngIf="recipePassed != null"></app-recipedetail>
   </div>
 </div>

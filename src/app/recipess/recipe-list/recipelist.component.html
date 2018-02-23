@@ -7,7 +7,7 @@
 <div class="row">
   <div class="col-xs-12">
     <app-recipeitem *ngFor="let singleRecipe of recipes" [recipe]="singleRecipe"
-                    (recipeItemSelected)="passRecipeSelected.emit($event)"></app-recipeitem>
+                    (recipeItemSelected)="onRecipeItemToPass(singleRecipe)"></app-recipeitem>
   </div>
 </div>
 

@@ -19,4 +19,7 @@ export class RecipelistComponent implements OnInit {
   ngOnInit() {
   }
 
+  onRecipeItemToPass(recipe: Recipe) {
+    this.passRecipeSelected.emit(recipe);
+  }
 }
