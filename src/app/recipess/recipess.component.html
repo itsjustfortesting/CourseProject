@@ -3,6 +3,9 @@
     <app-recipelist (passRecipeSelected)="onShowDetails($event)"></app-recipelist>
   </div>
   <div class="col-md-7">
-    <app-recipedetail [recipeToShow]="recipePassed" *ngIf="recipePassed != null"></app-recipedetail>
+    <app-recipedetail [recipeToShow]="recipePassed" *ngIf="recipePassed; else infoText"></app-recipedetail>
+    <ng-template #infoText>
+      <p>Please select a recipe</p>
+    </ng-template>
   </div>
 </div>
