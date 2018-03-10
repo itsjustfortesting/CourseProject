@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {DbService} from '../recipess/db.service';
+import {AuthService} from '../auth/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -8,7 +9,7 @@ import {DbService} from '../recipess/db.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private dbService: DbService) {
+  constructor(private dbService: DbService, private authService: AuthService) {
   }
 
   ngOnInit() {
@@ -23,5 +24,9 @@ export class HeaderComponent implements OnInit {
 
   onLoad() {
     this.dbService.loadData();
+  }
+
+  onLogout() {
+    this.authService.logout();
   }
 }
