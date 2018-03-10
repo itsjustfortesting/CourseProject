@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {DbService} from '../recipess/db.service';
 
 @Component({
   selector: 'app-header',
@@ -7,10 +8,20 @@ import {Component, OnInit} from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() {
+  constructor(private dbService: DbService) {
   }
 
   ngOnInit() {
   }
 
+  onSave() {
+    this.dbService.saveData().subscribe(
+      (response) => console.log(response),
+      (error) => console.log(error)
+    );
+  }
+
+  onLoad() {
+    this.dbService.loadData();
+  }
 }
