@@ -3,7 +3,7 @@ import 'rxjs/Rx';
 import {RecipeService} from '../recipess/recipe.service';
 import {Recipe} from '../recipess/recipe.model';
 import {AuthService} from '../auth/auth.service';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 
 
 @Injectable()
@@ -13,7 +13,15 @@ export class DbService {
 
   saveData() {
     const token = this.authService.getToken();
-    return this.httpClient.put('https://ng-recipe-book-71e19.firebaseio.com/data.json?auth=' + token, this.recipeService.getRecipes());
+
+    // Standard way
+    // return this.httpClient.put('https://ng-recipe-book-71e19.firebaseio.com/data.json?auth=' + token, this.recipeService.getRecipes());
+
+    // const headers = new HttpHeaders().set('Authorization', 'Bearer');
+    // return this.httpClient.put('https://ng-recipe-book-71e19.firebaseio.com/data.json?auth=' + token, this.recipeService.getRecipes(), {observe: 'body', headers: headers});
+
+    const params = new HttpParams().set('auth', token);
+    return this.httpClient.put('https://ng-recipe-book-71e19.firebaseio.com/data.json', this.recipeService.getRecipes(), {params: params});
   }
 
   loadData() {
