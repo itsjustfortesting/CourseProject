@@ -7,7 +7,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {SharedModule} from './shared/shared.module';
 import {AuthModule} from './auth/auth.module';
 import {CoreModule} from './core/core.module';
-import {HttpModule} from '@angular/http';
+import {HttpClientModule} from '@angular/common/http';
 
 
 @NgModule({
@@ -17,7 +17,7 @@ import {HttpModule} from '@angular/http';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpModule,
+    HttpClientModule,
     SharedModule,
     AuthModule,
     CoreModule
